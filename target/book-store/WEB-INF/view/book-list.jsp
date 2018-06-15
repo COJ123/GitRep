@@ -37,6 +37,11 @@
                class="add-button"
         />
 
+        <input type="button" value="Buy"
+               onclick="window.location.href='purchase'; return false;"
+               class="add-button"
+        />
+
 
         <input type="button" value="Admin Interface"
                onclick="window.location.href='${pageContext.request.contextPath}/bookstoreEditor/list'; return false;"

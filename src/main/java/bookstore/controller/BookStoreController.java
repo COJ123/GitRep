@@ -3,10 +3,11 @@ package bookstore.controller;
 import bookstore.entity.Author;
 import bookstore.entity.Book;
 import bookstore.entity.Genre;
+import bookstore.entity.Order;
 import bookstore.services.author.AuthorService;
 import bookstore.services.book.BookService;
 import bookstore.services.genre.GenreService;
-
+import bookstore.services.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,8 @@ public class BookStoreController {
     @Autowired
     AuthorService authorService;
 
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/list")
     public String listBooks(Model model){
@@ -52,7 +55,18 @@ public class BookStoreController {
         return "byGenres-list";
     }
 
+    @GetMapping("/purchase")
+    public String purchase(Model model){
+        Order order = new Order();
+        model.addAttribute("order", order);
+        return "order-form";
+    }
 
+    @PostMapping("/saveOrder")
+    public String saveOrder(@ModelAttribute("order") Order order){
+        orderService.saveOrder(order);
+        return "redirect:/bookstore/list";
+    }
 
     @ModelAttribute("books")
     public List<Book> initializeBooks() {

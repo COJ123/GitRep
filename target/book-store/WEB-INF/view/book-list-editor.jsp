@@ -42,6 +42,11 @@
                class="add-button"
         />
 
+        <input type="button" value="Show Purchases"
+               onclick="window.location.href='list-orders'; return false;"
+               class="add-button"
+        />
+
         <p>
             <a href="${pageContext.request.contextPath}/bookstore/list">Back to List</a>
         </p>

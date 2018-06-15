@@ -3,9 +3,11 @@ package bookstore.controller;
 import bookstore.entity.Author;
 import bookstore.entity.Book;
 import bookstore.entity.Genre;
+import bookstore.entity.Order;
 import bookstore.services.author.AuthorService;
 import bookstore.services.book.BookService;
 import bookstore.services.genre.GenreService;
+import bookstore.services.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class AdminInterfaceController {
 
     @Autowired
     AuthorService authorService;
+
+    @Autowired
+    OrderService orderService;
 
 
     @GetMapping("/list")
@@ -91,6 +96,13 @@ public class AdminInterfaceController {
     {
         bookService.deleteBook(theId);
         return "redirect:/bookstoreEditor/list";
+    }
+
+    @GetMapping("/list-orders")
+    public String listGenres(Model model){
+        List<Order> orders = orderService.getOrders();
+        model.addAttribute("orders", orders);
+        return "orders-list";
     }
 
     @ModelAttribute("genres")

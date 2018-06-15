@@ -37,18 +37,28 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><label>Title:</label></td>
+						<td><label>First Name:</label></td>
 						<td><form:input path="firstName" /></td>
 					</tr>
 				
 					<tr>
-						<td><label>Description:</label></td>
+						<td><label>Last Name:</label></td>
 						<td><form:input path="lastName" /></td>
 					</tr>
 
 					<tr>
-						<td><label>Price:</label></td>
+						<td><label>Address:</label></td>
 						<td><form:input path="address" /></td>
+					</tr>
+
+					<tr>
+						<td><label>Book:</label></td>
+						<td><form:select path="book" items="${books}" multiple="false" itemValue="title" itemLabel="title"/></td>
+					</tr>
+
+					<tr>
+						<td><label>Quantity:</label></td>
+						<td><form:input path="quantity" /></td>
 					</tr>
 
 
